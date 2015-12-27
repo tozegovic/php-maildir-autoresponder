@@ -11,10 +11,12 @@ Download the ``php-maildir-autoresponder.php`` script and place it in a director
 
 ```bash
 mkdir /usr/local/php-maildir-autoresponder
-wget https://github.com/dirkgroenen/Goldfish-Autoresponder/archive/master.tar.gz
-tar -xvf master.tar.gz -C /usr/local/goldfish
-mv /usr/local/goldfish/Goldfish-Autoresponder-master/* /usr/local/goldfish
-rm -r /usr/local/goldfish/Goldfish-Autoresponder-master
+# using '--no-check-certificate' for wget is bad practice, but I end up using it when 'Unable to locally verify the issuer's authority'
+wget https://github.com/tozegovic/php-maildir-autoresponder/archive/master.zip
+unzip master.zip
+mv php-maildir-autoresponder-master/php-maildir-autoresponder.php /usr/local/php-maildir-autoresponder/.
+rm -r php-maildir-autoresponder-master
+rm master.zip
 ```
 
 ## Configuration
@@ -38,7 +40,7 @@ In this file you have to change the configuration values so they match with your
 
 	$conf['create_user_settings_from_default'] = 0; // if 1, it will create a settings file in users' directories
 	                                                // php-maildir-autoresponder.json
-	                                                // manually edit the file to enable/disable autoresponse and set message
+	                                                // manually edit each user's file to enable/disable autoresponse and set message
 	$defaultUserSettings = [
 			'enabled' => 0,
 			'email' => "jdoe@mydomainname.com",
